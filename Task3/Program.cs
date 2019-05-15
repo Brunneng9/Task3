@@ -14,28 +14,28 @@ namespace Task3
             Console.WriteLine("Please enter a range of integer values with a difference greater than 10");
 
 
-            int intStart = GetIntigerValueFromConsole();
-            int intEnd = GetIntigerValueFromConsole();
+            int intRangeStart = GetIntigerValueFromConsole();
+            int intRangeEnd = GetIntigerValueFromConsole();
             int sum = 0;
 			
-            if (intEnd < intStart)
+            if (intRangeEnd < intRangeStart)
             {
-                intEnd = intEnd + intStart;
-                intStart = intEnd - intStart;
-                intEnd = intEnd - intStart;
+                intRangeEnd = intRangeEnd + intRangeStart;
+                intRangeStart = intRangeEnd - intRangeStart;
+                intRangeEnd = intRangeEnd - intRangeStart;
             }
 
-            if ((intEnd - intStart) <= 10)
+            if ((intRangeEnd - intRangeStart) <= 10)
             {
                 Console.WriteLine("Range should be more than 10");
                 goto EnterValue; 
             }
 
-            int[] valueArray = new int[(intEnd - intStart + 1)];
+            int[] valueArray = new int[(intRangeEnd - intRangeStart + 1)];
 
-            for (int i = intStart; i <= intEnd; i++)
+            for (int i = intRangeStart; i <= intRangeEnd; i++)
             {
-                valueArray[(i-intStart)] = i;
+                valueArray[(i-intRangeStart)] = i;
             }
 
             foreach (int i in valueArray)
