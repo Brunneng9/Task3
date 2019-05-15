@@ -10,26 +10,14 @@ namespace Task3
     {
         static void Main(string[] args)
         {
+			EnterValue:
             Console.WriteLine("Please enter a range of integer values with a difference greater than 10");
 
-            string start = Console.ReadLine();
-            string end = Console.ReadLine();
 
-            int intStart;
-            int intEnd;
+            int intStart = GetIntigerValueFromConsole();
+            int intEnd = GetIntigerValueFromConsole();
             int sum = 0;
-
-            try
-            {
-                intStart = int.Parse(start);
-                intEnd = int.Parse(end);
-            }
-            catch
-            {
-                Console.WriteLine("It's supposed to be range of integer values");
-                return;
-            }
-
+			
             if (intEnd < intStart)
             {
                 intEnd = intEnd + intStart;
@@ -40,7 +28,7 @@ namespace Task3
             if ((intEnd - intStart) <= 10)
             {
                 Console.WriteLine("Range should be more than 10");
-                return;
+                goto EnterValue; 
             }
 
             int[] valueArray = new int[(intEnd - intStart + 1)];
@@ -58,6 +46,25 @@ namespace Task3
 
             Console.WriteLine($"Sum is {sum}.");
             Console.Read();
-        }   
-    }
+        }
+
+		private static int GetIntigerValueFromConsole()
+		{
+			int enteredValue;
+			while (true)
+			{
+				if (int.TryParse(Console.ReadLine(), out enteredValue))
+				{
+					break;
+				}
+				else
+				{
+					Console.WriteLine("Value should be integer");
+				}
+			}
+			return enteredValue;
+
+		}
+	}
+	
 }
