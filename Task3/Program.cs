@@ -10,38 +10,46 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-			EnterValue:
-            Console.WriteLine("Please enter a range of integer values with a difference greater than 10");
+			bool statement = true;
+			int intStart;
+			int intEnd;
+			int sum = 0;
+			Console.WriteLine("Please enter a range of integer values with a difference greater than 10");
+			do
+			{
+				intStart = GetIntigerValueFromConsole();
+				intEnd = GetIntigerValueFromConsole();
 
 
-            int intStart = GetIntigerValueFromConsole();
-            int intEnd = GetIntigerValueFromConsole();
-            int sum = 0;
-			
-            if (intEnd < intStart)
-            {
-                intEnd = intEnd + intStart;
-                intStart = intEnd - intStart;
-                intEnd = intEnd - intStart;
-            }
+				if (intEnd < intStart)
+				{
+					intEnd = intEnd + intStart;
+					intStart = intEnd - intStart;
+					intEnd = intEnd - intStart;
+				}
 
-            if ((intEnd - intStart) <= 10)
-            {
-                Console.WriteLine("Range should be more than 10");
-                goto EnterValue; 
-            }
+				if ((intEnd - intStart) <= 10)
+				{
+					Console.WriteLine("Range should be more than 10");
+				}
+				else
+				{
+					statement = false;
+				}
+			} while (statement);
 
-            int[] valueArray = new int[(intEnd - intStart + 1)];
+
+			int[] valueArray = new int[(intEnd - intStart + 1)];
 
             for (int i = intStart; i <= intEnd; i++)
             {
                 valueArray[(i-intStart)] = i;
             }
 
-            foreach (int i in valueArray)
-                if (((i % 3) == 0) && ((i % 5) != 0)) 
+            foreach (int value in valueArray)
+                if (((value % 3) == 0) && ((value % 5) != 0)) 
             {
-                    sum = sum + i;
+                    sum = sum + value;
             }
 
             Console.WriteLine($"Sum is {sum}.");
