@@ -16,7 +16,6 @@ namespace Task3
 				intStart = GetIntigerValueFromConsole();
 				intEnd = GetIntigerValueFromConsole();
 
-
 				if (intEnd < intStart)
 				{
 					intEnd = intEnd + intStart;
@@ -33,7 +32,6 @@ namespace Task3
 					statement = false;
 				}
 			} while (statement);
-
 
 			int[] valueArray = new int[(intEnd - intStart + 1)];
 
@@ -67,7 +65,6 @@ namespace Task3
 				}
 			}
 			return enteredValue;
-
 		}
 	}
 	
